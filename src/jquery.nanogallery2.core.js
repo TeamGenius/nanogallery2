@@ -2097,7 +2097,7 @@
     // author: underscore.js - http://underscorejs.org/docs/underscore.html
     // Returns a function, that, when invoked, will only be triggered at most once during a given window of time.
     // Normally, the throttled function will run as much as it can, without ever going more than once per wait duration;
-    // but if you’d like to disable the execution on the leading edge, pass {leading: false}.
+    // but if youï¿½d like to disable the execution on the leading edge, pass {leading: false}.
     // To disable execution on the trailing edge, ditto.
     var throttle = function(func, wait, options) {
       var context, args, result;
@@ -6185,8 +6185,8 @@
           // In order to leave things as is, I used ID to identify the extension
           // https://stackoverflow.com/questions/6997262/how-to-pull-url-file-extension-out-of-url-string-using-javascript
           // Make sure the method used for verifying the extension matches the kind of url your selfhosted video has
-          var extension = url.split('.').pop().toLowerCase();
-
+          var extension = url.split('.').pop().toLowerCase().split('?')[0];//dont forget to strip off query string
+          
           // supported extensions
           var s = ( extension === 'mp4' || extension === 'webm' || extension === 'ogv' || extension === '3gp' ) ? extension : null ;
           return s;
@@ -6194,7 +6194,7 @@
         markup: function( url ) {
           // return '<video controls class="nGY2ViewerMedia"><source src="${id.src}" type="video/${id.type}" preload="auto">Your browser does not support the video tag (HTML 5).</video>';
           var extension = url.split('.').pop();
-          return '<video controls class="nGY2ViewerMedia"><source src="'+ url +'" type="video/'+ extension +'" preload="auto">Your browser does not support the video tag (HTML 5).</video>';
+          return '<video controls class="nGY2ViewerMedia" src="'+ url +'">Your browser does not support the video tag (HTML 5).</video>';
         },
         kind: 'video',
         selfhosted : true
@@ -7888,7 +7888,7 @@
         };
       }
 
-      // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+      // requestAnimationFrame polyfill by Erik Mï¿½ller. fixes from Paul Irish and Tino Zijdel
       // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
       // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
       // MIT license
@@ -8396,7 +8396,7 @@
       var vimg = new VImg(ngy2ItemIdx);
       G.VOM.items.push(vimg);
       items.push(G.I[ngy2ItemIdx]);
-      //TODO -> danger? -> pourquoi reconstruire la liste si déjà ouvert (back/forward)     
+      //TODO -> danger? -> pourquoi reconstruire la liste si dï¿½jï¿½ ouvert (back/forward)     
       var l = G.I.length;
       for( let idx = ngy2ItemIdx+1; idx < l ; idx++) {
         let item = G.I[idx];
